@@ -5,7 +5,7 @@
 a) Добавьте игру против бота
 b) Подумайте как наделить бота ""интеллектом"""
 
-# вариант человек против бота:
+# вариант человек против бота c "интеллектом":
 from random import randint
 
 def input_dat(name):
@@ -17,6 +17,13 @@ def input_dat(name):
 
 def p_print(name, k, counter, value):
     print(f"Ходил {name}, он взял {k}, теперь у него {counter}. Осталось на столе {value} конфет.")
+
+
+def bot_calc(value):
+    k = randint(1,29)
+    while value-k <= 28 and value > 29:
+        k = randint(1,29)
+    return k
 
 player1 = input("Введите имя первого игрока: ")
 player2 = "Bot"
@@ -38,7 +45,7 @@ while value > 28:
         flag = False
         p_print(player1, k, counter1, value)
     else:
-        k = randint(1,29)
+        k = bot_calc(value)
         counter2 += k
         value -= k
         flag = True
